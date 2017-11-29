@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  api:
+    image: api:python
+    build: ./api
+    ports:
+      - "5000:5000"
+  web:
+    image: web:php
+    build: ./www
+    ports:
+      - "80:80"
+    environment:
+      - API_ENDPOINT=http://api:5000/api/
+  redis:
+    image: redis
