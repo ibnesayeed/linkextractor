@@ -3,9 +3,12 @@
 
 require "sinatra"
 require "open-uri"
+require "uri"
 require "nokogiri"
 require "json"
 require "redis"
+
+set :protection, :except=>:path_traversal
 
 redis = Redis.new(host: "redis", port: 6379)
 
@@ -17,7 +20,7 @@ get "/" do
 end
 
 get "/api/*" do
-  url = [request.env["REQUEST_PATH"][5..-1], request.query_string].reject(&:empty?).join("?")
+  url = [params['splat'].first, request.query_string].reject(&:empty?).join("?")
   cache_status = "HIT"
   jsonlinks = redis.get(url)
   if jsonlinks.nil?
@@ -38,10 +41,13 @@ def extract_links(url)
   doc = Nokogiri::HTML(open(url))
   doc.css("a").each do |link|
     text = link.text.strip.split.join(" ")
-    links.push({
-      text: text.empty? ? "[IMG]" : text,
-      href: link["href"]
-    })
+    begin
+      links.push({
+        text: text.empty? ? "[IMG]" : text,
+        href: URI.join(url, link["href"])
+      })
+    rescue
+    end
   end
   links
 end
