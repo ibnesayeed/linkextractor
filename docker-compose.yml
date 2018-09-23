@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  api:
+    image: api:ruby
+    build: ./api
+    ports:
+      - "4567:4567"
+    volumes:
+      - ./logs:/app/logs
+  web:
+    image: web:php
+    build: ./www
+    ports:
+      - "80:80"
+    environment:
+      - API_ENDPOINT=http://api:4567/api/
+  redis:
+    image: redis
