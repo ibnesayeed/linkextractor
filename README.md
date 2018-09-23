@@ -1,5 +1,15 @@
-# Link Extractor
+# Link Extractor: Step 1
 
-A Docker tutorial using a link extraction application example.
+A basic page scraping script that prints out all the hyper references of the given web page.
 
-The code of various steps in the `master` branch are organized in sub-directories, but for demo purposes those individual directories are moved to the root of the repo and each step is made a sub-branch of the `demo` branch.
+## Changes from the previous step
+
+* Adds a `Dockerfile` to fix various issues describe in the previous step
+
+## Try it out
+
+```
+$ docker image build -t linkextractor:step1 .
+$ docker container run -it --rm linkextractor:step1 http://example.com/
+$ docker container run -it --rm linkextractor:step1 http://odu.edu/
+```
