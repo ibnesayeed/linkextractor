@@ -1,5 +1,17 @@
-# Link Extractor
+# Link Extractor: Step 0
 
-A Docker tutorial using a link extraction application example.
+A basic page scraping script that prints out all the hyper references of the given web page.
 
-The code of various steps in the `master` branch are organized in sub-directories, but for demo purposes those individual directories are moved to the root of the repo and each step is made a sub-branch of the `demo` branch.
+## Try it out
+
+```
+$ ./linkextractor.py http://example.com/
+```
+
+## Possible difficulties
+
+* Is the script executable? (`chmod a+x linkextractor.py`)
+* Is `Python` installed on the machine?
+* Can you install software on the machine?
+* Is `pip` installed?
+* Are `requests` and `beautifulsoup4` Python libraries installed?
