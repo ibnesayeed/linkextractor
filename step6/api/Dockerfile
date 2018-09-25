@@ -1,4 +1,4 @@
-FROM       ruby
+FROM       ruby:2
 LABEL      maintainer="Sawood Alam <@ibnesayeed>"
 
 ENV        LANG C.UTF-8

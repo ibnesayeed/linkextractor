@@ -1,4 +1,4 @@
-FROM       python
+FROM       python:3
 LABEL      maintainer="Sawood Alam <@ibnesayeed>"
 
 RUN        pip install beautifulsoup4
