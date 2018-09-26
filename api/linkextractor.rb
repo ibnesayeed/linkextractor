@@ -10,7 +10,7 @@ require "redis"
 
 set :protection, :except=>:path_traversal
 
-redis = Redis.new(host: "redis", port: 6379)
+redis = Redis.new(url: ENV["REDIS_URL"] || "redis://localhost:6379")
 
 Dir.mkdir("logs") unless Dir.exist?("logs")
 cache_log = File.new("logs/extraction.log", "a")
