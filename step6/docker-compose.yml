@@ -2,7 +2,7 @@ version: '3'
 
 services:
   api:
-    image: api:ruby
+    image: linkextractor-api:step6-ruby
     build: ./api
     ports:
       - "4567:4567"
@@ -11,7 +11,7 @@ services:
     volumes:
       - ./logs:/app/logs
   web:
-    image: web:php
+    image: linkextractor-web:step6-php
     build: ./www
     ports:
       - "80:80"
