@@ -22,4 +22,6 @@ done
 
 git checkout master
 
+rm -rf $tmpdir
+
 echo "All Done!"
