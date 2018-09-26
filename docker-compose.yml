@@ -2,12 +2,14 @@ version: '3'
 
 services:
   api:
-    image: api:python
+    image: linkextractor-api:step5-python
     build: ./api
     ports:
       - "5000:5000"
+    environment:
+      - REDIS_URL=redis://redis:6379
   web:
-    image: web:php
+    image: linkextractor-web:step5-php
     build: ./www
     ports:
       - "80:80"
