@@ -2,6 +2,7 @@ FROM       ruby:2
 LABEL      maintainer="Sawood Alam <@ibnesayeed>"
 
 ENV        LANG C.UTF-8
+ENV        REDIS_URL="redis://localhost:6379"
 
 WORKDIR    /app
 COPY       Gemfile /app/

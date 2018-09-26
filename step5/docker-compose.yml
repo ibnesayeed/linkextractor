@@ -6,6 +6,8 @@ services:
     build: ./api
     ports:
       - "5000:5000"
+    environment:
+      - REDIS_URL=redis://redis:6379
   web:
     image: web:php
     build: ./www

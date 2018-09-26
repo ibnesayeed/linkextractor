@@ -6,6 +6,8 @@ services:
     build: ./api
     ports:
       - "4567:4567"
+    environment:
+      - REDIS_URL=redis://redis:6379
     volumes:
       - ./logs:/app/logs
   web:
