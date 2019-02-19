@@ -30,6 +30,7 @@ get "/api/*" do
   end
 
   cache_log.puts "#{Time.now.to_i}\t#{cache_status}\t#{url}"
+  cache_log.flush
 
   status 200
   headers "content-type" => "application/json"
