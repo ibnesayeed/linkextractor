@@ -1,7 +1,7 @@
 # Link Extractor
 
-Link Extractor app scrapes links from a given web page.
-This repository illustrates step by step approach to learn [Docker](https://www.docker.com/).
+The Link Extractor application scrapes hyperlinks from a given web page.
+This repository illustrates a step by step approach to learn [Docker](https://www.docker.com/).
 
 It starts from running a very basic script and gradually leads to a multi-service container orchestration (AKA micro-service architecture).
 
