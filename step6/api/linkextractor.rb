@@ -13,7 +13,6 @@ set :protection, :except=>:path_traversal
 redis = Redis.new(url: ENV["REDIS_URL"] || "redis://localhost:6379")
 
 Dir.mkdir("logs") unless Dir.exist?("logs")
-cache_log = File.new("logs/extraction.log", "a")
 
 get "/" do
   "Usage: http://<hostname>[:<prt>]/api/<url>"
@@ -29,7 +28,9 @@ get "/api/*" do
     redis.set(url, jsonlinks)
   end
 
+  cache_log = File.open("logs/extraction.log", "a")
   cache_log.puts "#{Time.now.to_i}\t#{cache_status}\t#{url}"
+  cache_log.close
 
   status 200
   headers "content-type" => "application/json"
